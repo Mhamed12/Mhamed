@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+  <title>Restaurant</title>
+  <link rel="stylesheet" href="./css/jquery-ui.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <style>
+    body{
+      background-image: url("./resto.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    body{
+      position: absolute; top:25px; left:25%; width:50%;
+    }
+    #div_resume {
+  background-color:#6699FF; 
+  border: 2px solid; 
+  padding: 5px; }
+  h1{
+  text-align: center;
+  color:#6699FF 
+  }
+      legend{
+        color:#6699FF;
+      }
+
+          fieldset{   padding:0 20px 20px 20px;
+						border:1px solid #6699FF;
+					}	
+          section{
+          width: 48em;
+          flex: 1;
+          flex-basis: auto;
+          margin: .4em;
+          padding: 1em;
+          background-color: rgb(224, 224, 224);
+          border-radius: 10px;
+          Border: 1px solid;
+          display: flex;
+          justify-content: space-between;
+          flex-flow: wrap;
+          border-bottom: 1px dotted gray;
+          border-left: 1px solid black;
+      }
+    p{color : white;}
+</style>
+
+</head>
+
+<body>
+  <h1>Commandez votre table </h1>
+  <p>Ce formulaire permet de commander une table dans notre restaurant, ensuite vous pouvez commande vos plats. Il
+    faudra aussi indiquer vos coordonn&eacute;es et dans le cas de plusieurs personne, indiquer le nom de chacun
+    d'entre eux.</p>
+    <section>
+
+      
+
+  <form id="form1" name="form1" method="post" action="">
+      <fieldset>
+          <legend>********************Mhamed Braham DSI 2.1********************</legend>
+          <img src="med.jpg"height="200px" width="200px">
+             </fieldset>
+    <fieldset>
+        <legend>**************Table pour combien de personnes ?**************</legend>
+    
+    <select name="nbp" id="nbp" class="form-control">
+      <option value="-1">--Veuillez choisir---</option>
+      <option value="1">Une place</option>
+      <option value="2">Deux places</option>
+      <option value="4">4 places</option>
+      <option value="6">6 places</option>
+    </select>
+    <br />
+    <div id="chaises">
+      <img src="" id="ch">
+    </div>
+  </fieldset>
+    <br />
+    <fieldset>
+   <legend>*****************A quelle date vous allez venir ?*****************</legend>
+    <input name="date" type="text" id="date" class="form-control" />
+  </fieldset>
+    <br />
+
+
+
+    
+
+    <fieldset>
+      <legend>**************************Vos coordones**************************</legend>
+    
+    Civilit&eacute; :
+    <input name="civilite" type="radio" value="Madamme" />
+    Madamme
+    <input name="civilite" type="radio" value="Mademoiselle" />
+    Mademoiselle
+    <input name="civilite" type="radio" value="Monsieur" />
+    Monsieur
+    <br />
+    Nom et pr&eacute;nom :
+    <input name="nom" type="text" id="nom" size="60" class="form-control"/>
+
+    <br />
+    N&deg; de t&eacute;l&eacute;phone :
+    <input name="tel" type="text" id="tel" class="form-control"/>
+    <br />
+    <div id="div_accompagnateurs">Liste des accompagnateurs (une personne par ligne):
+      <br />
+      <textarea name="accompagnateurs" cols="60" rows="4" id="accompagnateurs" class="form-control"></textarea>
+      <br />
+    </div>
+  </fieldset>
+
+
+    
+
+
+  <fieldset>
+    <legend>*******************Que voulez-vous manger ?********************</legend>
+    <label>
+      <input name="cmd" type="checkbox" value="Salade" data-prix="5"/>
+      Salade</label><br />
+    <label> 
+      <input name="cmd" type="checkbox" value="Soupe" data-prix="2.5" />
+      Soupe </label>
+    <br />
+    <label>
+      <input name="cmd" type="checkbox" value="Couscous" data-prix="15.5" />
+      Couscous</label>
+    <br />
+    <label>
+      <input name="cmd" type="checkbox" value="Riz" data-prix="12" />
+      Riz</label>
+    <br />
+    <label>
+      <input name="cmd" type="checkbox" value="Fruits" data-prix="7" />
+      Fruits </label><br>
+    <label> 
+      <input name="cmd" type="checkbox" value="Gateaux" data-prix="6.4" />
+      Gateaux</label>
+    
+  </fieldset>
+    <br />
+    <input name="b1" type="button" id="b1" value="Valider ma commande" class="btn btn-primary"/>
+    <br />
+    <br />
+  
+    <div id="div_resume">
+    </div>
+    <p>&nbsp;</p>
+  </form>
+</section>
+</body>
+
+<!-- Les code Javascript CI-DESSOUS uniquement -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $("#nbp").change(function () {
+    var nb = $("#nbp").val();
+    if ($("#nbp").val() == '-1') {
+      $("#ch").attr("src", "");s
+    }
+    else
+    $("#ch").attr("src", "img/"+ nb + ".jpg");
+  });
+
+  $( function() {
+    $( "#date" ).datepicker();
+  } );
+
+  $("#b1").click(function () {
+    if ($("#nbp").val() == '-1') {
+      alert("Veuillez sélectionner le nombre des places");
+    }
+else
+    if ($("#date").val() =="") {
+      alert("saisir la date SVP");
+    }
+else
+    var x = $("input[name='civilite']:checked").val();
+  if(x==null)
+  {
+    alert("La civilite est obligatoire");
+  }
+  else
+  if($("#nom").val().length<10)
+  {
+    alert("Nom est prénom trop courts !");
+  }
+  else
+  if((isNaN($("#tel").val())==true)||($("#tel").val().length<8)||($("#tel").val().length>8))
+  {
+    alert("N° de tel invalide !!");
+  }
+  else
+    var y = $("input[name='cmd']:checked").val();
+  if(y==null)
+  {
+    alert("Choisir les plats");
+  }
+  
+  else
+  var prix=0;
+  var cmd=[];
+  var cmd1="";
+  $.each($("input[name='cmd']:checked"),function(){
+  cmd.push($(this).val());
+  prix+=Number($(this).attr("data-prix"));
+    });
+    for(i=0;i<cmd.length;i++)
+  {
+      cmd1+="<li>"+cmd[i]+"</li>";
+  }
+  
+  $("#div_resume").html("Bonjour "+x+" "+$("#nom").val()+"<br/>"+"Votre commande du "+$("#date").val()+" a bien été validée."+"<br/>"+" Les plats commandés sont :"+"<ul>"+cmd1+"</ul>"+"le montant total de la commande est de "+prix+"Dinars");
+  
+  
+});
+</script>
+
+</html>
